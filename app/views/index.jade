@@ -1,0 +1,95 @@
+doctype html
+html
+  head
+    title We-Chat
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    link(rel='stylesheet', href='/bootstrap/css/amelia.bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+   body
+    nav.navbar.navbar-default
+      div.container-fluid
+        div.navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') We-chat
+        div.collapse.navbar-collapse(id='bs-example-navbar-collapse-1')
+          ul.nav.navbar-nav.navbar-right      
+            li
+              a(href='http://localhost:3000') Go offline
+              // page will refresh user will logout
+   h1(align='center',style='font-style: bold;')  Current Users :
+      ul
+        li#username(align='center', style='font-style: bold;')
+      ul(align='center')
+        li#typing(style='font-style: bold;')    
+    
+    .chatbox
+      h1 Chatbox(will show last 5 chats if available)
+      br
+      h2(align='center')
+      ul#chats
+        for chat in chats
+          li= chat.message
+        div
+          ul#messages
+        br
+        br
+        br
+        form(action='')
+          input#m()
+          button Send
+        br
+  script(src='http://cdn.socket.io/socket.io-1.4.5.js')
+  script(src='http://code.jquery.com/jquery-1.11.1.js')
+  script.
+    var socket = io();
+    
+    var user = prompt("Please enter your Name to Chat");
+    
+    while(user == null || user == '' || user == 'undefined')
+    {
+    var user = prompt("If you can't enter your name you can't chat...");
+    }
+    
+    if(user!=null || user!='undefined'){
+    alert("Ciao! "+user+" let's chat using we-chat");
+    socket.emit('user',user);
+    }
+    
+    $('form').submit(function(){
+    socket.emit('chat', $('#m').val());
+    $("#m").val('');
+    return false;
+    });
+    
+    socket.on('chat', function(message){
+    $('#messages').append($('<li>').text(message));
+    });
+    
+    socket.on('message', function(message){
+    $('#typing').html(message);
+    });
+    
+    socket.on('username',function(names)
+    {
+    $('#username').html($('<li>').text(names));
+    })
+    
+    
+    var timeout;  
+    function timeoutfun() {
+    typing = false;
+    socket.emit('typing', false);
+    }
+    $('#m').keyup(function() {
+    typing = true;
+    socket.emit('typing', user +' is typing....');
+    clearTimeout(timeout);
+    timeout = setTimeout(timeoutfun, 500);
+    });
+  //user is typing function

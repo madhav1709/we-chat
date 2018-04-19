@@ -1,0 +1,83 @@
+body {
+  background-color:green;
+}
+
+*  {
+      margin: 0;
+      padding: 0;
+      
+ }
+#messages{
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0;
+}
+#messages 
+ li {
+        padding: 15px 10px;
+ }
+      
+ #messages li:nth-child(odd) 
+ {
+      background: black;
+ }
+      
+ div.container {
+     
+      width: 800px;
+  }
+ 
+ .chatbox {
+      
+      width: 800px;
+      border-style: dashed;
+      box-shadow: 2;
+      overflow:hidden;
+  }
+ 
+      #chats { 
+        list-style-type: none;
+       margin: 0; 
+       padding: 0; 
+     }
+      #chats li {
+       padding: 5px 10px; 
+    }
+      #chats li:nth-child(odd) { 
+        background: red;
+      }
+
+form {
+     
+      padding: 3px;
+      position:fixed;
+      bottom: 0;
+      width: 1200px;
+ }
+      
+ form input {
+      color: red;
+      border: 0;
+      padding: 10px;
+      width: 800px;
+      margin-right: .5%;
+ }
+ 
+ form button {
+      width: 100px;
+      background:black;
+      border: none;
+      padding: 10px;
+ }
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+   form input {
+    width:364px;
+   }
+  
+   .chatbox {
+   	width:364px;
+   }
