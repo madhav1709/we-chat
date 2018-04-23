@@ -39,6 +39,6 @@ To install this web-app on Linux or Mac:-
 ## How To Use
 To use the app just run it on browser and enter you screen-name when prompted and chat with your friends.
 you can also see if your friend is typing or not and also see the last chats(5).
-very simple and easy to use caht app.
+very simple and easy to use chat app.
 
 
