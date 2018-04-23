@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/public'));//set the public folder
 app.set('views', path.join(__dirname + '/app/views'));//set the views folder
 
 
-var dbPath  = "mongodb://madhav:fury@ds151169.mlab.com:51169/chat";//command to connect database
+var dbPath  = "mongodb://madhav:fury@ds151169.mlab.com:51169/chat";//command to connect database(mlab)
 db = mongoose.connect(dbPath);
 mongoose.connection.once('open', function() {
   console.log("******Successfully Connected******");
