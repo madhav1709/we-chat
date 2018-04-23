@@ -28,8 +28,8 @@ To install this web-app on windows:-
 * 7)run localhost:3000 on your browser and enjoy(Make sure you have a Mongodb connection open!!!).
 
 To install this web-app on Linux or Mac:-
-* 1)download or clone the file
-* 2)you can clone by typing git clone https://github.com/madhav1709/we-chat.git.If git is installed.
+* 1)download or clone the file.
+* 2)you can clone by typing(git clone https://github.com/madhav1709/we-chat.git).If git is installed.
 * 3)using Termianl go to the project directory
 * 4)install Node js and then install npm
 * 5)Type node --version and npm --version to check if they are properly installed
